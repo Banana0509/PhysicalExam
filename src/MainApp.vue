@@ -3,16 +3,18 @@
     <Layout>
       <Header>
         <Menu mode="horizontal" theme="dark" active-name="1">
-          <div class="layout-logo"></div>
+          <div class="layout-logo">
+            <h1>{{this.GLOBAL.web_name}}</h1>
+          </div>
           <div class="layout-nav">
-              <login-dialog v-on:id="getId"></login-dialog>
+            <login-dialog></login-dialog>
           </div>
         </Menu>
       </Header>
       <Layout>
         <Sider hide-trigger :style="{background: '#fff'}">
-          <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']" >
-            <Submenu name="1" to="/welcome">
+          <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']" accordion>
+            <Submenu name="1">
               <template slot="title" >
                 <Icon type="ios-paper"></Icon>
                    体检信息录入
@@ -45,8 +47,8 @@
           <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
             <!--<breadcrumb>
               <breadcrumb-item to="/">首页</breadcrumb-item>
-            </breadcrumb>-->
-            <Button type="info"  v-if="isShowButton" @click="saveInfo">保存信息</Button><br><br>
+            </breadcrumb>
+            <Button type="info"  v-if="isShowButton" @click="saveInfo">保存信息</Button><br><br>-->
             <router-view> </router-view>
           </Content>
         </Layout>
@@ -64,11 +66,14 @@ export default {
     return{
       isShowButton:true,
       currentPage:1,
-      id:this.GLOBAL.userId
     }
   },
   components:{
     'login-dialog':LoginDialog
+  },
+  mounted() {
+    console.log("mounted");
+    this.$router.push({path: "/welcome"});
   },
   methods:{
     unshow(){
@@ -86,17 +91,17 @@ export default {
           break;
         default:break;
       }
-    },
+    }/*,
     getId(id){
-      console.log("getid:"+id);
-      this.id=id;
+      //console.log("getid:"+id);
+      //this.id=id;
 
       //this.GLOBAL.userId.set(id);
-      console.log("this.GLOBAL.userId:"+this.GLOBAL.userId);
+     // console.log("this.GLOBAL.userId:"+this.GLOBAL.userId);
 
-      this.GLOBAL.userId=id;
-      console.log("this.GLOBAL.userId:"+this.GLOBAL.userId);
-    }
+     // this.GLOBAL.userId=id;
+      //console.log("this.GLOBAL.userId:"+this.GLOBAL.userId);
+    }*/
   }
 }
 </script>
@@ -115,12 +120,13 @@ export default {
 .layout-logo{
   width: 100px;
   height: 30px;
-  background: #5b6270;
+  background: transparent;
   border-radius: 3px;
   float: left;
   position: relative;
   top: 15px;
   left: 20px;
+  text-decoration-color: whitesmoke;
 }
 .layout-nav{
   width: 420px;

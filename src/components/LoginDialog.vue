@@ -21,23 +21,27 @@
       data(){
           return{
             personnalInfo:'',
-            id:"",
+            id: '',
             modall:false,
             isShow:true
           }
       },
       methods:{
         ok(){
-          console.log("ok");
-          this.personnalInfo="体检人ID:"+this.id;
-          this.isShow=false;
-          this.sendMsg();
+          console.log("ok" + this.GLOBAL.userId.toString() + "," + this.id.toString());
+          this.GLOBAL.userId = this.id;
+          console.log("ok2" + this.GLOBAL.userId.toString() + "," + this.id.toString());
+          this.personnalInfo = "体检人ID:" + this.id;
+          console.log("ok3" + this.GLOBAL.userId.toString() + "," + this.id.toString());
+          this.isShow = !this.isShow;
+          console.log("ok4" + this.GLOBAL.userId.toString() + "," + this.id.toString());
+          //this.sendMsg();
         } ,
         cancel(){
-          console.log("cancel");
+          // console.log("cancel");
         },
         sendMsg(){
-          this.$emit('id',this.id);
+          //this.$emit('id',this.id);
         }
       }
     }

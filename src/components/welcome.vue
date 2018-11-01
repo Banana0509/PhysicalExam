@@ -1,6 +1,10 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <ul>
+      <li>请根据自己的部门进行相应体检操作</li>
+      <li>有任何问题请联系管理员</li>
+    </ul>
   </div>
 </template>
 
@@ -9,7 +13,7 @@ export default {
   name: 'welcome',
   data () {
     return {
-      msg: '兴欣体检平台'
+      msg: '欢迎您使用兴欣体检平台'
     }
   }
 }
