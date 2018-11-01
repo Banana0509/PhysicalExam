@@ -1,29 +1,33 @@
 <template>
-  <div class="maxdiv" >
-    <div v-show="isShowLogin">
-      <br><br> <br><br>
-      <h1 class="title">兴欣体检平台</h1>
-      <br><br>
-    </div>
-    <div class="content"  v-show="isShowLogin">
-      <br><br>
-      <Form ref="formInline" :model="formInline" :rules="ruleInline" class="formstyle">
-        <FormItem prop="user">
-          <Input type="text" v-model="formInline.user" placeholder="账号">
-          <Icon type="ios-person-outline" slot="prepend"></Icon>
-          </Input>
-        </FormItem>
-        <FormItem prop="password">
-          <Input type="password" v-model="formInline.password" placeholder="密码">
-          <Icon type="ios-lock-outline" slot="prepend"></Icon>
-          </Input>
-        </FormItem>
-        <FormItem>
-          <Button type="primary" @click="handleSubmit('formInline')">登&nbsp;&nbsp;&nbsp;&nbsp;录</Button>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <Button type="primary">忘记密码</Button>
-        </FormItem>
-      </Form>
+  <div>
+    <div class="maxdiv" v-show="isShowLogin">
+      <div>
+        <br><br> <br><br>
+        <h1 class="title">{{this.GLOBAL.web_name}}</h1>
+        <br><br>
+      </div>
+      <div class="content">
+        <br>
+        <Form ref="formInline" :model="formInline" :rules="ruleInline" class="formstyle" label-position="left"
+              :label-width="60">
+          <FormItem prop="user" label="账号">
+            <Input type="text" v-model="formInline.user" placeholder="账号">
+            <Icon type="ios-person-outline" slot="prepend"></Icon>
+            </Input>
+          </FormItem>
+          <FormItem prop="password" label="密码">
+            <Input type="password" v-model="formInline.password" placeholder="密码">
+            <Icon type="ios-lock-outline" slot="prepend"></Icon>
+            </Input>
+          </FormItem>
+          <FormItem>
+            <Button type="primary" @click="handleSubmit('formInline')">登&nbsp;&nbsp;&nbsp;&nbsp;录</Button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <Button type="primary">忘记密码</Button>
+          </FormItem>
+        </Form>
+        <!--<a href="http://www.herenit.com/">和仁科技出品</a>-->
+      </div>
     </div>
     <div v-show="!isShowLogin">
       <router-view></router-view>
@@ -73,31 +77,33 @@
 
   .title{
     width:200px;
-    background-color:#5b6270;
+    background-color: transparent;
     color: white;
     text-align: center;
     text-decoration-color: white;
     margin: 0 auto;
   }
   .maxdiv{
-    background-color:#5b6270;
+  / / background-color: #5b6270;
     color: white;
     text-align: center;
     height: 800px;
+    background: url("../static/login.jpg");
+    background-size: 100%;
   }
   .content{
-    background-color:white;
     color: white;
     text-align: center;
     alignment: center;
     margin: 0 auto;
-    border: 1px solid #5b6270;
+  / / border: 1 px solid #5b6270;
     line-height: normal;
     height: 200px;
-    width: 500px;
+    width: 400px;
+    background-color: transparent;
   }
   .formstyle{
-    width: 100%;
+    background-color: transparent;
 
   }
 </style>
