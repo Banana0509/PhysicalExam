@@ -1,5 +1,5 @@
 <template>
-  <Form :label-width="150" class="form_type">
+  <Form :label-width="150" class="form_type" :model="Data">
     <FormItem label="有无浅表肿块">
       <Row>
         <Col span="11">
@@ -100,6 +100,7 @@
     data(){
       return {
         Data: {
+          UserId: this.GLOBAL.userId,
           lump: "",
           lump_select: "",
           skin: "",
@@ -112,7 +113,6 @@
           varix_select: "",
           Summarize: ""
         },
-        checkedNamesArray: ['有无浅表肿块', '有无皮肤色素沉着', '有无乳腺结节', '有无疝气', '有无静脉曲张']
       }
     }
   }

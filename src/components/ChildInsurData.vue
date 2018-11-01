@@ -1,35 +1,61 @@
 <template>
+  <Form :model="Data" class="form_type" label-position="right" :label-width="150">
+    <FormItem label="身高(m)">
+      <InputNumber v-model="Data.height"/>
+    </FormItem>
+    <FormItem label="体重(kg)">
+      <InputNumber v-model="Data.weight"/>
+    </FormItem>
+    <FormItem label="血压(mmHg)">
+      <Row>
+        <Col span="11">
+        <InputNumber v-model="Data.bloodPressureL"/>
+        </Col>
+        <Col span="2">
+        /</Col>
+        <Col span="11">
+        <InputNumber v-model="Data.bloodPressureH"/>
+        </Col>
+      </Row>
+    </FormItem>
+    <FormItem label="预测身高(m)">
+      <InputNumber v-model="Data.pre_height"/>
+    </FormItem>
+    <FormItem label="喂养情况">
+      <Select v-model="Data.feed_status_select">
+        <Option value="A">优</Option>
+        <Option value="B">良</Option>
+        <Option value="C">差</Option>
+      </Select>
+    </FormItem>
+    <FormItem label="备注">
+      <Input type="textarea" v-model="Data.feed_status" :autosize="true" placeholder="可不填"/>
+    </FormItem>
+    <FormItem label="生长发育评价">
+      <Select v-model="Data.grade_select">
+        <Option value="A">优</Option>
+        <Option value="B">良</Option>
+        <Option value="C">差</Option>
+      </Select>
+    </FormItem>
+    <FormItem label="备注">
+      <Input type="textarea" v-model="Data.grade" :autosize="true" placeholder="可不填"/>
+    </FormItem>
+    <FormItem label="记录小结">
+      <Input type="textarea" v-model="Data.Summarize" :autosize="true" placeholder="点击按钮自动生成，无需输入"/>
+    </FormItem>
+    <FormItem>
+      <Row>
+        <Col span="11">
+        <Button type="info" @click="generateSummarize">生成记录小结</Button>
+        </Col>
+        <Col span="11">
+        <Button type="info" @click="saveInfo">保存信息</Button>
+        </Col>
+      </Row>
+    </FormItem>
 
-  <div class="demo-split">
-    <Split >
-      <div slot="left" class="demo-split-pane">
-        <label>{{DataTitle[0]}}</label>
-        <input-number :max="10000" :min="1" v-model="GeneralDataArray['height']" :formatter="value=> `${value}cm`"
-                      :parser="value=> value.replace('cm','')" :step="0.1"></input-number><br><br>
-
-        <label>{{DataTitle[1]}}</label>
-        <input-number :max="10000" :min="1" v-model="GeneralDataArray['preHeight']" :formatter="value=> `${value}cm`"
-                      :parser="value=> value.replace('cm','')" :step="0.1"></input-number><br><br>
-
-        <label>{{DataTitle[2]}}</label>
-        <input-number :max="1000" :min="1" v-model="GeneralDataArray['weight']" :formatter="value=> `${value}kg`"
-                      :parser="value=> value.replace('kg','')" :step="0.01"></input-number><br><br>
-
-        <label>{{DataTitle[3]}}</label>
-        <input-number :max="1000" :min="1" v-model="GeneralDataArray['bloodPressure']" :formatter="value=> `${value} mmHg`"
-                      :parser="value=> value.replace('mmHg','')" :step="0.01"></input-number><br><br>
-
-      </div>
-      <div slot="right" class="demo-split-pane">
-        <label>{{DataTitle[4]}}</label><br>
-        <Input type="textarea" v-model="GeneralDataArray['feedStatus']" :autosize="true"  placeholder="请输入..."/><br><br>
-        <label>{{DataTitle[5]}}</label><br>
-        <Input type="textarea" v-model="GeneralDataArray['growComment']" :autosize="true"placeholder="请输入..."/><br><br>
-        <label>{{DataTitle[6]}}</label><br>
-        <Input type="textarea" v-model="GeneralDataArray['Summarize']" :autosize="true" placeholder="请输入..."/><br>
-      </div>
-    </Split>
-  </div>
+  </Form>
 </template>
 
 <script>
@@ -37,21 +63,28 @@
     name: "ChildInsurData",
     data(){
       return{
-        msg:'一般信息页面',
-        GeneralDataArray:[{height:''},{weight:''},{preHeight:''},{feedStatus:''},{bloodPressure:''},{growComment:''},{Summarize:''}],
-        DataTitle:['身高 ','预测身高','体重','血压','喂养情况','生长发育评价','记录小结']
+        Data: {
+          UserId: this.GLOBAL.userId,
+          height: 1,
+          weight: 5,
+          bloodPressureL: 90,
+          bloodPressureH: 130,
+          pre_height: 1,
+          feed_status: '',
+          feed_status_select: "",
+          grade: "",
+          grade_select: '',
+          Summarize: ""
+        },
+        DataTitle: ['身高 ', '体重', '血压', '预测身高', '喂养情况', '生长发育评价', '记录小结']
       }
     }
   }
 </script>
 
 <style scoped>
-  .demo-split{
-    height:400px;
-    border:1px solid #dcdee2;
+  .form_type {
+    width: 400px;
+    margin: 0 auto;
   }
-  .demo-split-pane{
-    padding: 10px;
-  }
-
 </style>

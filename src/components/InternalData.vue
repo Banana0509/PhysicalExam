@@ -1,5 +1,5 @@
 <template>
-  <Form :label-width="150" class="form_type">
+  <Form :label-width="150" class="form_type" :model="Data">
     <FormItem label="有无高血压">
       <Row>
         <Col span="11">
@@ -98,6 +98,7 @@
         data(){
           return {
             Data: {
+              UserId: this.GLOBAL.userId,
               Hypertension: "",
               Hypertension_select: "",
               HeartDisease: "",
@@ -118,7 +119,7 @@
 
 <style scoped>
   .form_type {
-    width: 400px;
+    width: 500px;
     margin: 0 auto;
   }
 </style>

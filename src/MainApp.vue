@@ -21,8 +21,8 @@
               </template>
               <MenuItem name="1-1" to="/GeneralData" v-on:click.native="show(1)" >一般资料</MenuItem>
               <MenuItem name="1-2" to="/InternalData"  v-on:click.native="show(2)">内科</MenuItem>
-              <MenuItem name="1-3" to="/SurgeryData"  v-on:click.native="show(3)">外科</MenuItem>
-              <MenuItem name="1-4" to="/GynaecologyData"  v-on:click.native="show(4)">妇科</MenuItem>
+              <MenuItem name="1-3" to="/SurgeryData" v-on:click.native="show(3)">外科(男)</MenuItem>
+              <MenuItem name="1-4" to="/GynaecologyData" v-on:click.native="show(4)">妇科(女)</MenuItem>
               <MenuItem name="1-5" to="/FivesensData"  v-on:click.native="show(5)">五官科</MenuItem>
             </Submenu>
             <Submenu name="2">

@@ -2,17 +2,17 @@
   <Form :model="Data" class="form_type" label-position="right" :label-width="150">
     <FormItem label="身高(m)">
       <InputNumber v-model="Data.height"/>
-        </FormItem>
-        <FormItem label="体重(kg)">
-          <InputNumber v-model="Data.weight"/>
-        </FormItem>
-          <FormItem label="体重指数(BMI)">
-            <InputNumber v-model="Data.BMI" readonly="true"/>
-          </FormItem>
-          <FormItem  label="腰围(cm)">
-            <InputNumber v-model="Data.waistline"/>
-          </FormItem>
-         <FormItem label="血压(mmHg)">
+    </FormItem>
+    <FormItem label="体重(kg)">
+      <InputNumber v-model="Data.weight"/>
+    </FormItem>
+    <FormItem label="体重指数(BMI)">
+      <InputNumber v-model="Data.BMI" readonly="true"/>
+    </FormItem>
+    <FormItem label="腰围(cm)">
+      <InputNumber v-model="Data.waistline"/>
+    </FormItem>
+    <FormItem label="血压(mmHg)">
            <Row>
              <Col span="11">
              <InputNumber v-model="Data.bloodPressureL"/>
@@ -25,7 +25,7 @@
            </Row>
 
          </FormItem>
-          <FormItem label="基本服药史">
+    <FormItem label="基本服药史">
             <Select v-model="Data.medicationHis_select">
               <Option value="服药历史1">服药历史1</Option>
               <Option value="服药历史2">服药历史2</Option>
@@ -35,29 +35,29 @@
     <FormItem label="基本服药史-备注">
       <Input type="textarea" v-model="Data.medicationHis" :autosize="true" placeholder="可不填"/>
           </FormItem>
-          <FormItem label="药物及食物过敏史">
-            <Select v-model="Data.allergicHis_select">
+    <FormItem label="药物及食物过敏史">
+      <Select v-model="Data.allergicHis_select">
               <Option value="药物及食物过敏史1">药物及食物过敏史1</Option>
               <Option value="药物及食物过敏史2">药物及食物过敏史2</Option>
               <Option value="药物及食物过敏史3">药物及食物过敏史3</Option>
             </Select>
-          </FormItem>
+    </FormItem>
     <FormItem label="药物及食物过敏史-备注">
       <Input type="textarea" v-model="Data.allergicHis" :autosize="true" placeholder="可不填"/>
-          </FormItem>
-          <FormItem label="记录小结">
+    </FormItem>
+    <FormItem label="记录小结">
           <Input type="textarea" v-model="Data.Summarize" :autosize="true" placeholder="点击按钮自动生成，无需输入"/>
-          </FormItem>
-          <FormItem>
-            <Row>
-              <Col span="11">
-              <Button type="info" @click="generateSummarize">生成记录小结</Button>
-              </Col>
-              <Col span="11">
-              <Button type="info" @click="saveInfo">保存信息</Button>
-              </Col>
-            </Row>
-          </FormItem>
+    </FormItem>
+    <FormItem>
+      <Row>
+        <Col span="11">
+        <Button type="info" @click="generateSummarize">生成记录小结</Button>
+        </Col>
+        <Col span="11">
+        <Button type="info" @click="saveInfo">保存信息</Button>
+        </Col>
+      </Row>
+    </FormItem>
 
     </Form>
 </template>
@@ -67,7 +67,6 @@
       name: "GeneralData",
       data() {
         return {
-          msg: '一般信息页面',
           Data: {
             UserId: this.GLOBAL.userId,
             height: 1.75,
