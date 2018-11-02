@@ -1,19 +1,30 @@
 <template>
   <div class="layout" id="MainApp">
-    <Layout>
+    <Layout class="back">
       <Header>
         <Menu mode="horizontal" theme="dark" active-name="1">
+          <div class="layout-user">
+            <Button type="default" ghost>职工ID:{{ this.GLOBAL.employeeId}} 彭医生</Button>
+            <h4 class="title"></h4>
+          </div>
           <div class="layout-logo">
-            <h1>{{this.GLOBAL.web_name}}</h1>
+            <h1 class="title">{{this.GLOBAL.web_name}}</h1>
           </div>
           <div class="layout-nav">
             <login-dialog></login-dialog>
           </div>
         </Menu>
       </Header>
-      <Layout>
+      <Layout class="back">
         <Sider hide-trigger :style="{background: '#fff'}">
-          <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']" accordion>
+          <Menu active-name="0-1" theme="light" width="auto" :open-names="['0']" accordion>
+            <Submenu name="0">
+              <template slot="title">
+                <Icon type="ios-navigate"></Icon>
+                首页
+              </template>
+              <MenuItem name="0-1" to="/welcome" v-on:click.native="show(1)">欢迎使用</MenuItem>
+            </Submenu>
             <Submenu name="1">
               <template slot="title" >
                 <Icon type="ios-paper"></Icon>
@@ -27,7 +38,7 @@
             </Submenu>
             <Submenu name="2">
               <template slot="title">
-                <Icon type="ios-keypad"></Icon>
+                <Icon type="ios-paper"></Icon>
                 儿保
               </template>
               <MenuItem name="2-1" to="/ChildInsurData"  v-on:click.native="show(6)">一般资料</MenuItem>
@@ -40,16 +51,23 @@
               <MenuItem name="3-1" to="/ExamReport" v-on:click.native="unshow">体检报告</MenuItem>
               <MenuItem name="3-2" v-on:click.native="unshow">儿保报告</MenuItem>
             </Submenu>
+            <Submenu name="4">
+              <template slot="title">
+                <Icon type="ios-keypad"></Icon>
+                数据维护
+              </template>
+              <MenuItem name="4-1">下拉菜单维护</MenuItem>
+            </Submenu>
           </Menu>
 
         </Sider>
-        <Layout :style="{padding: '0 24px 24px'}">
-          <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
+        <Layout :style="{padding: '0 24px 24px'}" class="back">
+          <Content :style="{padding: '24px', minHeight: '280px'}" class="back">
             <!--<breadcrumb>
               <breadcrumb-item to="/">首页</breadcrumb-item>
             </breadcrumb>
             <Button type="info"  v-if="isShowButton" @click="saveInfo">保存信息</Button><br><br>-->
-            <router-view> </router-view>
+            <router-view class="back"></router-view>
           </Content>
         </Layout>
       </Layout>
@@ -71,11 +89,12 @@ export default {
   components:{
     'login-dialog':LoginDialog
   },
-  mounted() {
-    console.log("mounted");
+  created() {
+    console.log("created");
     this.$router.push({path: "/welcome"});
   },
   methods:{
+
     unshow(){
      // console.log("click");
       this.isShowButton=false;
@@ -111,26 +130,56 @@ export default {
   text-decoration: underline;
 }
 .layout{
-  border: 1px solid #d7dde4;
-  background: #f5f7f9;
+  border: 0px;
+  background: transparent;
   position: relative;
   border-radius: 4px;
   overflow: hidden;
 }
-.layout-logo{
-  width: 100px;
-  height: 30px;
+
+.title {
+  color: #f5f7f9;
+  background: transparent;
+}
+
+.layout-user {
+  display: inline;
+  width: 30%;
+  height: 400px;
   background: transparent;
   border-radius: 3px;
   float: left;
   position: relative;
-  top: 15px;
+  top: 5px;
   left: 20px;
-  text-decoration-color: whitesmoke;
+}
+
+.layout-logo {
+  display: inline;
+  width: 40%;
+  height: 100px;
+  background: transparent;
+  border-radius: 3px;
+  text-align: center;
+  margin: 0 auto;
+  float: left;
+/ / position: relative;
+/ / top: 5 px;
+/ / left: 20 px;
 }
 .layout-nav{
-  width: 420px;
-  margin: 0 auto;
-  margin-right: 20px;
+  display: inline;
+  width: 30%;
+  height: 100px;
+  background: transparent;
+  border-radius: 3px;
+  float: left;
+  position: relative;
+  top: 5px;
+  left: 20px;
+}
+
+.back {
+  background-color: transparent;
 }
 </style>

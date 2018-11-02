@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="background">
     <div class="maxdiv" v-show="isShowLogin">
       <div>
         <br><br> <br><br>
@@ -21,15 +21,15 @@
             </Input>
           </FormItem>
           <FormItem>
-            <Button type="primary" @click="handleSubmit('formInline')">登&nbsp;&nbsp;&nbsp;&nbsp;录</Button>
+            <Button type="success" @click="handleSubmit('formInline')">登&nbsp;&nbsp;&nbsp;&nbsp;录</Button>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <Button type="primary">忘记密码</Button>
+            <Button type="error">忘记密码</Button>
           </FormItem>
         </Form>
         <!--<a href="http://www.herenit.com/">和仁科技出品</a>-->
       </div>
     </div>
-    <div v-show="!isShowLogin">
+    <div v-show="!isShowLogin" class="back">
       <router-view></router-view>
     </div>
   </div>
@@ -60,6 +60,7 @@
       handleSubmit(name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
+            this.GLOBAL.employeeId = this.formInline.user;
             this.$Message.success('Success!');
             //登陆成功进行页面跳转
             this.isShowLogin = false;
@@ -84,7 +85,6 @@
     margin: 0 auto;
   }
   .maxdiv{
-  / / background-color: #5b6270;
     color: white;
     text-align: center;
     height: 800px;
@@ -104,6 +104,16 @@
   }
   .formstyle{
     background-color: transparent;
-
   }
+
+  .back {
+    background-color: transparent;
+  }
+
+  .background {
+    background: url("../static/background.jpg");
+    background-size: 100%;
+    height: 800px;
+  }
+
 </style>

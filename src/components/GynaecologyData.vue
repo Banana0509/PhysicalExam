@@ -83,10 +83,10 @@
     <FormItem>
       <Row>
         <Col span="11">
-        <Button type="info" @click="generateSummarize">生成记录小结</Button>
+        <Button type="success" @click="generateSummarize">生成记录小结</Button>
         </Col>
         <Col span="11">
-        <Button type="info" @click="saveInfo">保存信息</Button>
+        <Button type="success" @click="saveInfo">保存信息</Button>
         </Col>
       </Row>
     </FormItem>
