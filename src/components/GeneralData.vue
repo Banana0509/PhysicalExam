@@ -7,7 +7,7 @@
       <InputNumber v-model="Data.weight"/>
     </FormItem>
     <FormItem label="体重指数(BMI)">
-      <InputNumber v-model="Data.BMI" :readonly="true"/>
+      <InputNumber v-model="BMI" :readonly="true"/>
     </FormItem>
     <FormItem label="腰围(cm)">
       <InputNumber v-model="Data.waistline"/>
@@ -69,7 +69,7 @@
         return {
           Data: {
             UserId: this.GLOBAL.userId,
-            height: 1,
+            height: 1.7,
             weight: 65,
             waistline: 71,
             BMI: 1,
@@ -84,18 +84,16 @@
         }
       },
       computed: {
-        DataBmi() {
-          console.log("computed DataBmi");
+        BMI() {
+          console.log("computed DataBMI");
           if (this.Data.weight > 0 && this.Data.height > 0) {
             let num = this.Data.weight / (this.Data.height * this.Data.height);
-            this.Data.BMI = num.toFixed(3);
+            this.Data.BMI = parseFloat(num.toFixed(3));   //报错很久，tofix之后变成strin一直报错，加了一个parseFloat解决
+            return parseFloat(num.toFixed(3));
           }
         }
       },
       watch: {
-        DataBmi() {//必须写上，不然computed不工作。。。
-          console.log("watch DataBmi");
-        }
       },
       methods: {
         saveInfo() {
