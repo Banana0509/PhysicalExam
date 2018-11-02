@@ -2,10 +2,17 @@
   <div class="layout" id="MainApp">
     <Layout class="back">
       <Header>
-        <Menu mode="horizontal" theme="dark" active-name="1">
           <div class="layout-user">
-            <Button type="default" ghost>职工ID:{{ this.GLOBAL.employeeId}} 彭医生</Button>
-            <h4 class="title"></h4>
+            <Dropdown trigger="click">
+              <a href="javascript:void(0)">
+                职工ID:{{ this.GLOBAL.employeeId}}
+                <Icon type="ios-arrow-down"></Icon>
+              </a>
+              <DropdownMenu slot="list">
+                <DropdownItem>设置</DropdownItem>
+                <DropdownItem>退出</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </div>
           <div class="layout-logo">
             <h1 class="title">{{this.GLOBAL.web_name}}</h1>
@@ -13,7 +20,6 @@
           <div class="layout-nav">
             <login-dialog></login-dialog>
           </div>
-        </Menu>
       </Header>
       <Layout class="back">
         <Sider hide-trigger :style="{background: '#fff'}">
@@ -63,10 +69,6 @@
         </Sider>
         <Layout :style="{padding: '0 24px 24px'}" class="back">
           <Content :style="{padding: '24px', minHeight: '280px'}" class="back">
-            <!--<breadcrumb>
-              <breadcrumb-item to="/">首页</breadcrumb-item>
-            </breadcrumb>
-            <Button type="info"  v-if="isShowButton" @click="saveInfo">保存信息</Button><br><br>-->
             <router-view class="back"></router-view>
           </Content>
         </Layout>
@@ -145,13 +147,14 @@ export default {
 .layout-user {
   display: inline;
   width: 30%;
-  height: 400px;
+  height: 100px;
   background: transparent;
   border-radius: 3px;
   float: left;
   position: relative;
   top: 5px;
   left: 20px;
+  color: whitesmoke;
 }
 
 .layout-logo {
