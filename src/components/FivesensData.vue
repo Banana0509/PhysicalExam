@@ -48,7 +48,7 @@
     data(){
       return {
         Data: {
-          UserId: this.GLOBAL.userId,
+          userId: this.GLOBAL.userId,
           hearing: "", hearing_select: '',
           vision: "", vision_select: '',
           mouth: "", mouth_select: "",
@@ -58,7 +58,10 @@
     },
     methods: {
       saveInfo() {
-
+        this.Data.userId = this.GLOBAL.userId;
+        this.$http.post(this.GLOBAL.url + "/FivesensData", this.Data).then(function (res) {
+          this.data = res.data;
+        })
       },
       generateSummarize() {
         this.Data.Summarize = "听力: " + this.Data.hearing_select + "  " + this.Data.hearing + " \r\n"

@@ -64,7 +64,7 @@
     data(){
       return{
         Data: {
-          UserId: this.GLOBAL.userId,
+          userId: this.GLOBAL.userId,
           height: 1,
           weight: 5,
           bloodPressureL: 90,
@@ -80,7 +80,11 @@
     },
     methods: {
       saveInfo() {
-
+        console.log("ChildInsurData this.GLOBAL.userId:" + this.GLOBAL.userId);
+        this.Data.userId = this.GLOBAL.userId;
+        this.$http.post(this.GLOBAL.url + "/ChildInsurData", this.Data).then(function (res) {
+          this.data = res.data;
+        })
       },
       generateSummarize() {
         this.Data.Summarize = "身高: " + this.Data.height + "米\r\n" + "体重: " + this.Data.weight + " 千克\r\n"

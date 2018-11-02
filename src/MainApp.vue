@@ -2,18 +2,25 @@
   <div class="layout" id="MainApp">
     <Layout class="back">
       <Header>
-        <Menu mode="horizontal" theme="dark" active-name="1">
-          <div class="layout-user">
-            <Button type="default" ghost>职工ID:{{ this.GLOBAL.employeeId}} 彭医生</Button>
-            <h4 class="title"></h4>
-          </div>
-          <div class="layout-logo">
-            <h1 class="title">{{this.GLOBAL.web_name}}</h1>
-          </div>
-          <div class="layout-nav">
-            <login-dialog></login-dialog>
-          </div>
-        </Menu>
+        <div class="layout-user">
+          <login-dialog></login-dialog>
+        </div>
+
+        <div class="layout-logo">
+          <h1 class="title">{{this.GLOBAL.web_name}}</h1>
+        </div>
+
+        <Dropdown @on-click="clickDrop" placement="bottom-start">
+          <a href="javascript:void(0)">
+            职工ID:{{ this.GLOBAL.employeeId}}
+            <Icon type="ios-arrow-down"></Icon>
+          </a>
+          <DropdownMenu slot="list">
+            <DropdownItem name="Setting">设置 Setting</DropdownItem>
+            <DropdownItem name="Exit">退出 Exit</DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+
       </Header>
       <Layout class="back">
         <Sider hide-trigger :style="{background: '#fff'}">
@@ -63,10 +70,6 @@
         </Sider>
         <Layout :style="{padding: '0 24px 24px'}" class="back">
           <Content :style="{padding: '24px', minHeight: '280px'}" class="back">
-            <!--<breadcrumb>
-              <breadcrumb-item to="/">首页</breadcrumb-item>
-            </breadcrumb>
-            <Button type="info"  v-if="isShowButton" @click="saveInfo">保存信息</Button><br><br>-->
             <router-view class="back"></router-view>
           </Content>
         </Layout>
@@ -110,6 +113,9 @@ export default {
           break;
         default:break;
       }
+    },
+    clickDrop() {
+      console.log("drop click");
     }/*,
     getId(id){
       //console.log("getid:"+id);
@@ -144,19 +150,20 @@ export default {
 
 .layout-user {
   display: inline;
-  width: 30%;
-  height: 400px;
+  width: 40%;
+  height: 100px;
   background: transparent;
   border-radius: 3px;
   float: left;
   position: relative;
   top: 5px;
   left: 20px;
+  color: whitesmoke;
 }
 
 .layout-logo {
   display: inline;
-  width: 40%;
+  width: 50%;
   height: 100px;
   background: transparent;
   border-radius: 3px;

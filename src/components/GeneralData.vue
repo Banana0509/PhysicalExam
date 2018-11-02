@@ -68,7 +68,7 @@
       data() {
         return {
           Data: {
-            UserId: this.GLOBAL.userId,
+            userId: this.GLOBAL.userId,
             height: 1.7,
             weight: 65,
             waistline: 71,
@@ -94,9 +94,13 @@
         }
       },
       watch: {
+
       },
       methods: {
         saveInfo() {
+          console.log("GeneralData this.GLOBAL.userId:" + this.GLOBAL.userId);
+          console.log("GeneralData userId:" + this.Data.userId);
+          this.Data.userId = this.GLOBAL.userId;
           this.$http.post(this.GLOBAL.url + "/GeneralData", this.Data).then(function (res) {
             this.data = res.data;
             })

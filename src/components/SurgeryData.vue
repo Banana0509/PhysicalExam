@@ -130,7 +130,7 @@
     data(){
       return {
         Data: {
-          UserId: this.GLOBAL.userId,
+          userId: this.GLOBAL.userId,
           bald: "0", bald_select: "",
           lump: "0", lump_select: "",
           skin: "0", skin_select: "",
@@ -144,7 +144,10 @@
     },
     methods: {
       saveInfo() {
-
+        this.Data.userId = this.GLOBAL.userId;
+        this.$http.post(this.GLOBAL.url + "/SurgeryData", this.Data).then(function (res) {
+          this.data = res.data;
+        })
       },
       generateSummarize() {
         if (this.Data.bald == 1) {
