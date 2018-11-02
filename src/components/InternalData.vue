@@ -99,21 +99,53 @@
           return {
             Data: {
               UserId: this.GLOBAL.userId,
-              Hypertension: "",
-              Hypertension_select: "",
-              HeartDisease: "",
-              HeartDisease_select: "",
-              CerebralInfraction: "",
-              CerebralInfraction_select: "",
-              Diabetes: "",
-              Diabetes_select: "",
-              Tumor: "",
-              Tumor_select: "",
+              Hypertension: "0", Hypertension_select: "",
+              HeartDisease: "0", HeartDisease_select: "",
+              CerebralInfraction: "0", CerebralInfraction_select: "",
+              Diabetes: "0", Diabetes_select: "",
+              Tumor: "0", Tumor_select: "",
               Summarize: "",
             },
             checkedNamesArray:['有无高血压','有无冠心病','有无脑梗塞','有无糖尿病','有无肿瘤']
           }
+        },
+      methods: {
+        saveInfo() {
+
+        },
+        generateSummarize() {
+          if (this.Data.Hypertension == 1) {
+            this.Data.Summarize = "有高血压   " + this.Data.Hypertension_select + "\r\n";
+          }
+          else if (this.Data.Hypertension == 0) {
+            this.Data.Summarize = "无高血压   " + "\r\n";
+          }
+          if (this.Data.HeartDisease == 1) {
+            this.Data.Summarize += "有冠心病   " + this.Data.HeartDisease_select + "\r\n";
+          }
+          else if (this.Data.HeartDisease == 0) {
+            this.Data.Summarize += "无冠心病   " + "\r\n";
+          }
+          if (this.Data.CerebralInfraction == 1) {
+            this.Data.Summarize += "有脑梗塞   " + this.Data.CerebralInfraction_select + "\r\n";
+          }
+          else if (this.Data.CerebralInfraction == 0) {
+            this.Data.Summarize += "无脑梗塞   " + "\r\n";
+          }
+          if (this.Data.Diabetes == 1) {
+            this.Data.Summarize += "有糖尿病   " + this.Data.Diabetes_select + "\r\n";
+          }
+          else if (this.Data.Diabetes == 0) {
+            this.Data.Summarize += "无糖尿病   " + "\r\n";
+          }
+          if (this.Data.Tumor == 1) {
+            this.Data.Summarize += "有肿瘤   " + this.Data.Tumor_select + "\r\n";
+          }
+          else if (this.Data.Tumor == 0) {
+            this.Data.Summarize += "无肿瘤   " + "\r\n";
+          }
         }
+      }
     }
 </script>
 

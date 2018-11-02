@@ -7,7 +7,7 @@
       <InputNumber v-model="Data.weight"/>
     </FormItem>
     <FormItem label="体重指数(BMI)">
-      <InputNumber v-model="Data.BMI" readonly="true"/>
+      <InputNumber v-model="Data.BMI" :readonly="true"/>
     </FormItem>
     <FormItem label="腰围(cm)">
       <InputNumber v-model="Data.waistline"/>
@@ -32,7 +32,7 @@
               <Option value="服药历史3">服药历史3</Option>
             </Select>
           </FormItem>
-    <FormItem label="基本服药史-备注">
+    <FormItem label="备注">
       <Input type="textarea" v-model="Data.medicationHis" :autosize="true" placeholder="可不填"/>
           </FormItem>
     <FormItem label="药物及食物过敏史">
@@ -42,7 +42,7 @@
               <Option value="药物及食物过敏史3">药物及食物过敏史3</Option>
             </Select>
     </FormItem>
-    <FormItem label="药物及食物过敏史-备注">
+    <FormItem label="备注">
       <Input type="textarea" v-model="Data.allergicHis" :autosize="true" placeholder="可不填"/>
     </FormItem>
     <FormItem label="记录小结">
@@ -69,16 +69,16 @@
         return {
           Data: {
             UserId: this.GLOBAL.userId,
-            height: 1.75,
+            height: 1,
             weight: 65,
             waistline: 71,
             BMI: 1,
             bloodPressureL: 90,
             bloodPressureH: 130,
             medicationHis: "",
-            medicationHis_select: '',
+            medicationHis_select: "",
             allergicHis: "",
-            allergicHis_select: '',
+            allergicHis_select: "",
             Summarize: ""
           },
         }
@@ -89,8 +89,6 @@
           if (this.Data.weight > 0 && this.Data.height > 0) {
             let num = this.Data.weight / (this.Data.height * this.Data.height);
             this.Data.BMI = num.toFixed(3);
-          }
-          if (this.Data.height) {
           }
         }
       },
@@ -117,9 +115,6 @@
 </script>
 
 <style scoped>
-.form_item_type{
-  width: 100px;
-}
 
 .form_type{
   width: 400px;

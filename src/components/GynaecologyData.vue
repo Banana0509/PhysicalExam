@@ -27,7 +27,7 @@
         </Col>
         <Col span="11">
         <Select v-model="Data.skin_select" v-show="Data.skin == '1'">
-          <Option value="色素沉着1">色素沉着</Option>
+          <Option value="色素沉着">色素沉着</Option>
         </Select>
         </Col>
       </Row>
@@ -57,7 +57,7 @@
         </Col>
         <Col span="11">
         <Select v-model="Data.hernia_select" v-show="Data.hernia == '1'">
-          <Option value="疝气">有无疝气</Option>
+          <Option value="疝气">疝气</Option>
         </Select>
         </Col>
       </Row>
@@ -72,7 +72,7 @@
         </Col>
         <Col span="11">
         <Select v-model="Data.varix_select" v-show="Data.varix == '1'">
-          <Option value="静脉曲张">有无静脉曲张</Option>
+          <Option value="静脉曲张">静脉曲张</Option>
         </Select>
         </Col>
       </Row>
@@ -101,18 +101,50 @@
       return {
         Data: {
           UserId: this.GLOBAL.userId,
-          lump: "",
-          lump_select: "",
-          skin: "",
-          skin_select: "",
-          breast: "",
-          breast_select: "",
-          hernia: "",
-          hernia_select: "",
-          varix: "",
-          varix_select: "",
+          lump: "0", lump_select: "",
+          skin: "0", skin_select: "",
+          breast: "0", breast_select: "",
+          hernia: "0", hernia_select: "",
+          varix: "0", varix_select: "",
           Summarize: ""
         },
+      }
+    },
+    methods: {
+      saveInfo() {
+
+      },
+      generateSummarize() {
+        if (this.Data.lump == 1) {
+          this.Data.Summarize = "有浅表肿块   " + this.Data.lump_select + "\r\n";
+        }
+        else if (this.Data.lump == 0) {
+          this.Data.Summarize = "无浅表肿块   " + "\r\n";
+        }
+        if (this.Data.skin == 1) {
+          this.Data.Summarize += "有皮肤色素沉着   " + this.Data.skin_select + "\r\n";
+        }
+        else if (this.Data.skin == 0) {
+          this.Data.Summarize += "无皮肤色素沉着   " + "\r\n";
+        }
+        if (this.Data.breast == 1) {
+          this.Data.Summarize += "有乳腺结节   " + this.Data.breast_select + "\r\n";
+        }
+        else if (this.Data.breast == 0) {
+          this.Data.Summarize += "无乳腺结节   " + "\r\n";
+        }
+        if (this.Data.hernia == 1) {
+          this.Data.Summarize += "有疝气   " + this.Data.hernia_select + "\r\n";
+        }
+        else if (this.Data.hernia == 0) {
+          this.Data.Summarize += "无疝气   " + "\r\n";
+        }
+        if (this.Data.varix == 1) {
+          this.Data.Summarize += "有静脉曲张   " + this.Data.varix_select + "\r\n";
+        }
+        else if (this.Data.varix == 0) {
+          this.Data.Summarize += "无静脉曲张   " + "\r\n";
+        }
       }
     }
   }

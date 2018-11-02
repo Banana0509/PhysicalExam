@@ -23,9 +23,9 @@
     </FormItem>
     <FormItem label="喂养情况">
       <Select v-model="Data.feed_status_select">
-        <Option value="A">优</Option>
-        <Option value="B">良</Option>
-        <Option value="C">差</Option>
+        <Option value="优">优</Option>
+        <Option value="良">良</Option>
+        <Option value="差">差</Option>
       </Select>
     </FormItem>
     <FormItem label="备注">
@@ -33,9 +33,9 @@
     </FormItem>
     <FormItem label="生长发育评价">
       <Select v-model="Data.grade_select">
-        <Option value="A">优</Option>
-        <Option value="B">良</Option>
-        <Option value="C">差</Option>
+        <Option value="优">优</Option>
+        <Option value="良">良</Option>
+        <Option value="差">差</Option>
       </Select>
     </FormItem>
     <FormItem label="备注">
@@ -76,7 +76,18 @@
           grade_select: '',
           Summarize: ""
         },
-        DataTitle: ['身高 ', '体重', '血压', '预测身高', '喂养情况', '生长发育评价', '记录小结']
+      }
+    },
+    methods: {
+      saveInfo() {
+
+      },
+      generateSummarize() {
+        this.Data.Summarize = "身高: " + this.Data.height + "米\r\n" + "体重: " + this.Data.weight + " 千克\r\n"
+          + "血压: " + this.Data.bloodPressureL + "/" + this.Data.bloodPressureH + " mmHg\r\n"
+          + "预测身高: " + this.Data.pre_height + "米\r\n"
+          + "喂养情况: " + this.Data.feed_status_select + "\r\n" + "备注: " + this.Data.feed_status + "\r\n"
+          + "生长发育评价: " + this.Data.grade_select + "\r\n" + "备注: " + this.Data.grade;
       }
     }
   }

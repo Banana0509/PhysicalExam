@@ -49,15 +49,21 @@
       return {
         Data: {
           UserId: this.GLOBAL.userId,
-          hearing: "",
-          hearing_select: '',
-          vision: "",
-          vision_select: '',
-          mouth: "",
-          mouth_select: "",
+          hearing: "", hearing_select: '',
+          vision: "", vision_select: '',
+          mouth: "", mouth_select: "",
           Summarize: ""
         },
-        checkedNamesArray: ['听力筛查', '视力筛查', '口腔检查', '记录小结']
+      }
+    },
+    methods: {
+      saveInfo() {
+
+      },
+      generateSummarize() {
+        this.Data.Summarize = "听力: " + this.Data.hearing_select + "  " + this.Data.hearing + " \r\n"
+          + "视力: " + this.Data.vision_select + "  " + this.Data.vision + " \r\n"
+          + "口腔: " + this.Data.mouth_select + "  " + this.Data.mouth + " \r\n";
       }
     }
   }

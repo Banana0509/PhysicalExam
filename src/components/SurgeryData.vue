@@ -131,22 +131,58 @@
       return {
         Data: {
           UserId: this.GLOBAL.userId,
-          bald: "",
-          bald_select: "",
-          lump: "",
-          lump_select: "",
-          skin: "",
-          skin_select: "",
-          phimosis: "",
-          phimosis_select: "",
-          piles: "",
-          piles_select: "",
-          hernia: "",
-          hernia_select: "",
-          varix: "",
-          varix_select: "",
+          bald: "0", bald_select: "",
+          lump: "0", lump_select: "",
+          skin: "0", skin_select: "",
+          phimosis: "0", phimosis_select: "",
+          piles: "0", piles_select: "",
+          hernia: "0", hernia_select: "",
+          varix: "0", varix_select: "",
           Summarize: ""
         },
+      }
+    },
+    methods: {
+      saveInfo() {
+
+      },
+      generateSummarize() {
+        if (this.Data.bald == 1) {
+          this.Data.Summarize = "有秃顶   " + this.Data.bald_select + "\r\n";
+        }
+        else if (this.Data.bald == 0) {
+          this.Data.Summarize = "无秃顶   " + "\r\n";
+        }
+        if (this.Data.lump == 1) {
+          this.Data.Summarize += "有浅表肿块   " + this.Data.lump_select + "\r\n";
+        }
+        else if (this.Data.lump == 0) {
+          this.Data.Summarize += "无浅表肿块   " + "\r\n";
+        }
+        if (this.Data.skin == 1) {
+          this.Data.Summarize += "有皮肤色素沉着   " + this.Data.skin_select + "\r\n";
+        }
+        else if (this.Data.skin == 0) {
+          this.Data.Summarize += "无皮肤色素沉着   " + "\r\n";
+        }
+        if (this.Data.phimosis == 1) {
+          this.Data.Summarize += "有包茎   " + this.Data.phimosis_select + "\r\n";
+        }
+        else if (this.Data.phimosis == 0) {
+          this.Data.Summarize += "无包茎   " + "\r\n";
+        }
+        if (this.Data.hernia == 1) {
+          this.Data.Summarize += "有疝气   " + this.Data.hernia_select + "\r\n";
+        }
+        else if (this.Data.hernia == 0) {
+          this.Data.Summarize += "无疝气   " + "\r\n";
+        }
+        if (this.Data.varix == 1) {
+          this.Data.Summarize += "有静脉曲张   " + this.Data.varix_select + "\r\n";
+        }
+        else if (this.Data.varix == 0) {
+          this.Data.Summarize += "无静脉曲张   " + "\r\n";
+        }
       }
     }
   }
