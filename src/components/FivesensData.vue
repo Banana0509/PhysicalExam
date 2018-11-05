@@ -49,6 +49,7 @@
       return {
         Data: {
           userId: this.GLOBAL.userId,
+          empId: this.GLOBAL.employeeId,
           hearing: "", hearing_select: '',
           vision: "", vision_select: '',
           mouth: "", mouth_select: "",
@@ -59,6 +60,7 @@
     methods: {
       saveInfo() {
         this.Data.userId = this.GLOBAL.userId;
+        this.Data.empId = this.GLOBAL.employeeId;
         this.$http.post(this.GLOBAL.url + "/FivesensData", this.Data).then(function (res) {
           this.data = res.data;
         })

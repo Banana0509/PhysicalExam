@@ -11,8 +11,6 @@
       data() {
         return {
           column: [{title: 'id', key: 'id'}, {title: 'age', key: 'age'}, {title: 'cupSize', key: 'cupSize'}],
-          //data1: [{name: 'banana', name1: 'banana1'}, {name: 'banana', name1: 'banana1'}]
-          data:[],
           res:"",
           isShowPdf:true,
           pdfData:"",
@@ -26,11 +24,8 @@
       },
       methods : {
         exportData() {
-          this.$http.get(this.GLOBAL.url+"/GeneralData/Report/"+this.GLOBAL.userId).then(function () {
-            //this.data = res.data;
-            console.log( this.GLOBAL.userId);
-          });
-          this.$http.get(this.GLOBAL.url+"/download",{responseType:'arraybuffer'}).then(function (ret) {
+
+          this.$http.get(this.GLOBAL.url + "/GeneralData/Report/" + this.GLOBAL.userId, {responseType: 'arraybuffer'}).then(function (ret) {
               if(ret.status == 200){
                 let blob = new Blob([ret.data],{
                   type:'application/pdf'
@@ -45,34 +40,6 @@
                 document.body.appendChild(link);
               }})
         },
-        /*getData(){
-         console.log("getdata");
-         this.$http.get(this.GLOBAL.url+"/girls").then(function (res) {
-           this.data = res.body;
-           console.log( this.data);
-         })
-       },
-       download(){
-
-         console.log("download");
-         this.$http.get(this.GLOBAL.url+"/download",{responseType:'arraybuffer'}).then(function (ret) {
-           if(ret.status == 200){
-             let blob = new Blob([ret.data],{
-               type:'application/pdf'
-             });
-
-             let objectUrl = URL.createObjectURL(blob);
-             let link = document.createElement("a");
-             //this.pdfData = objectUrl;
-             let fname = '体检报告';
-             link.pdfurl = objectUrl;
-             link.href = objectUrl;
-             link.setAttribute("download",fname);
-             document.body.appendChild(link);
-             link.click();
-           }
-         })
-       }*/
       },
       components:{
       }

@@ -69,6 +69,7 @@
         return {
           Data: {
             userId: this.GLOBAL.userId,
+            empId: this.GLOBAL.employeeId,
             height: 1.7,
             weight: 65,
             waistline: 71,
@@ -101,6 +102,7 @@
           console.log("GeneralData this.GLOBAL.userId:" + this.GLOBAL.userId);
           console.log("GeneralData userId:" + this.Data.userId);
           this.Data.userId = this.GLOBAL.userId;
+          this.Data.empId = this.GLOBAL.employeeId;
           this.$http.post(this.GLOBAL.url + "/GeneralData", this.Data).then(function (res) {
             this.data = res.data;
             })

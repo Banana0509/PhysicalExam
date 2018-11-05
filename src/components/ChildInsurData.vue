@@ -65,6 +65,7 @@
       return{
         Data: {
           userId: this.GLOBAL.userId,
+          empId: this.GLOBAL.employeeId,
           height: 1,
           weight: 5,
           bloodPressureL: 90,
@@ -82,6 +83,7 @@
       saveInfo() {
         console.log("ChildInsurData this.GLOBAL.userId:" + this.GLOBAL.userId);
         this.Data.userId = this.GLOBAL.userId;
+        this.Data.empId = this.GLOBAL.employeeId;
         this.$http.post(this.GLOBAL.url + "/ChildInsurData", this.Data).then(function (res) {
           this.data = res.data;
         })

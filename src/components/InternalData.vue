@@ -99,6 +99,7 @@
           return {
             Data: {
               userId: this.GLOBAL.userId,
+              empId: this.GLOBAL.employeeId,
               Hypertension: "0", Hypertension_select: "",
               HeartDisease: "0", HeartDisease_select: "",
               CerebralInfraction: "0", CerebralInfraction_select: "",
@@ -112,6 +113,7 @@
       methods: {
         saveInfo() {
           this.Data.userId = this.GLOBAL.userId;
+          this.Data.empId = this.GLOBAL.employeeId;
           this.$http.post(this.GLOBAL.url + "/InternalData", this.Data).then(function (res) {
             this.data = res.data;
           })

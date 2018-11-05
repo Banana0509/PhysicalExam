@@ -8,6 +8,7 @@ import SurgeryData from '@/components/SurgeryData'
 import GynaecologyData from '@/components/GynaecologyData'
 import FivesensData from '@/components/FivesensData'
 import ExamReport from '@/components/ExamReport'
+import ChildReport from '@/components/ChildReport'
 import ChildInsurData from '@/components/ChildInsurData'
 import MainApp from "../MainApp"
 Vue.use(Router)
@@ -63,6 +64,11 @@ export default new Router({
           path:'/ChildInsurData',
           name:'ChildInsurData',
           component: ChildInsurData
+        },
+        {
+          path: "/ChildReport",
+          name: "ChildReport",
+          component: ChildReport
         }
       ]
     },

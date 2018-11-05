@@ -56,7 +56,7 @@
                 汇总打印
               </template>
               <MenuItem name="3-1" to="/ExamReport" v-on:click.native="unshow">体检报告</MenuItem>
-              <MenuItem name="3-2" v-on:click.native="unshow">儿保报告</MenuItem>
+              <MenuItem name="3-2" to="/ChildReport" v-on:click.native="unshow">儿保报告</MenuItem>
             </Submenu>
             <Submenu name="4">
               <template slot="title">

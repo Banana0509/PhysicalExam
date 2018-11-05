@@ -101,6 +101,7 @@
       return {
         Data: {
           userId: this.GLOBAL.userId,
+          empId: this.GLOBAL.employeeId,
           lump: "0", lump_select: "",
           skin: "0", skin_select: "",
           breast: "0", breast_select: "",
@@ -113,6 +114,7 @@
     methods: {
       saveInfo() {
         this.Data.userId = this.GLOBAL.userId;
+        this.Data.empId = this.GLOBAL.employeeId;
         this.$http.post(this.GLOBAL.url + "/GynaecologyData", this.Data).then(function (res) {
           this.data = res.data;
         })
