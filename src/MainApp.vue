@@ -17,7 +17,7 @@
           </a>
           <DropdownMenu slot="list">
             <DropdownItem name="Setting">设置 Setting</DropdownItem>
-            <DropdownItem name="Exit">退出 Exit</DropdownItem>
+            <DropdownItem name="Exit" @click="Exit">退出 Exit</DropdownItem>
           </DropdownMenu>
         </Dropdown>
 
@@ -114,8 +114,17 @@ export default {
         default:break;
       }
     },
-    clickDrop() {
-      console.log("drop click");
+    Exit() {
+      console.log("exit");
+      this.GLOBAL.isShowLogin = true;
+    },
+    clickDrop(name) {
+      console.log("drop click:" + name);
+      if (name == "Exit") {
+        console.log(this.GLOBAL.isShowLogin);
+        this.GLOBAL.isShowLogin = true;
+        console.log(this.GLOBAL.isShowLogin);
+      }
     }/*,
     getId(id){
       //console.log("getid:"+id);

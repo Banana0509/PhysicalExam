@@ -44,7 +44,7 @@
           user: '',
           password: '',
         },
-        isShowLogin:true,
+        isShowLogin: this.GLOBAL.isShowLogin,
         ruleInline: {
           user: [
             { required: true, message: '请输入账号', trigger: 'blur' }
@@ -56,6 +56,14 @@
         }
       }
     },
+    computed: {
+      global() {
+        console.log("computed global:" + this.isShowLogin + this.GLOBAL.isShowLogin);
+        this.isShowLogin = this.GLOBAL.isShowLogin;
+        console.log("computed global:" + this.isShowLogin + this.GLOBAL.isShowLogin);
+        return this.isShowLogin;
+      }
+    },
     methods: {
       handleSubmit(name) {
         this.$refs[name].validate((valid) => {
@@ -64,6 +72,7 @@
             this.$Message.success('Success!');
             //登陆成功进行页面跳转
             this.isShowLogin = false;
+            this.GLOBAL.isShowLogin = false;
             this.$router.push({path:"/MainApp"});
           } else {
             this.$Message.error('Fail!');
