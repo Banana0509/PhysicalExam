@@ -1,6 +1,6 @@
 <template>
   <div class="background">
-    <div class="maxdiv" v-show="isShowLogin">
+    <div class="maxdiv" v-show="this.$store.isShowLogin">
       <div>
         <br><br> <br><br>
         <h1 class="title">{{this.GLOBAL.web_name}}</h1>
@@ -29,7 +29,7 @@
         <!--<a href="http://www.herenit.com/">和仁科技出品</a>-->
       </div>
     </div>
-    <div v-show="!isShowLogin" class="back">
+    <div v-show="!this.$store.isShowLogin" class="back">
       <router-view></router-view>
     </div>
   </div>
@@ -44,7 +44,7 @@
           user: '',
           password: '',
         },
-        isShowLogin: this.GLOBAL.isShowLogin,
+        //isShowLogin: this.GLOBAL.isShowLogin,
         ruleInline: {
           user: [
             { required: true, message: '请输入账号', trigger: 'blur' }
@@ -58,11 +58,14 @@
     },
     computed: {
       global() {
-        console.log("computed global:" + this.isShowLogin + this.GLOBAL.isShowLogin);
-        this.isShowLogin = this.GLOBAL.isShowLogin;
-        console.log("computed global:" + this.isShowLogin + this.GLOBAL.isShowLogin);
-        return this.isShowLogin;
+        //console.log("computed global:" + this.isShowLogin + this.GLOBAL.isShowLogin);
+        //this.isShowLogin = this.GLOBAL.isShowLogin;
+        //console.log("computed global:" + this.isShowLogin + this.GLOBAL.isShowLogin);
+        // return this.isShowLogin;
       }
+    },
+    created() {
+      console.log("this.$store.isShowLogin" + this.$store.isShowLogin);
     },
     methods: {
       handleSubmit(name) {
@@ -71,9 +74,15 @@
             this.GLOBAL.employeeId = this.formInline.user;
             this.$Message.success('Success!');
             //登陆成功进行页面跳转
-            this.isShowLogin = false;
-            this.GLOBAL.isShowLogin = false;
-            this.$router.push({path:"/MainApp"});
+            //this.isShowLogin = false;
+            //this.GLOBAL.isShowLogin = false;
+            this.$store.commit('setisShowLogin', false);
+            if (this.formInline.user == 'admin') {
+              this.$router.push({path: "/Admin"});
+            }
+            else {
+              this.$router.push({path: "/MainApp"});
+            }
           } else {
             this.$Message.error('Fail!');
           }
