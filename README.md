@@ -2,7 +2,11 @@
 
 > 体检页面项目
 
-## Build Setup
+#使用说明
+idea中打开此项目后，执行npm install安装所有依赖
+安装完成后，npm run dev运行项目即可
+
+## Build Setup 
 
 ``` bash
 # install dependencies
