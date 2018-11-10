@@ -26,7 +26,6 @@
             <Button type="error">忘记密码</Button>
           </FormItem>
         </Form>
-        <!--<a href="http://www.herenit.com/">和仁科技出品</a>-->
       </div>
     </div>
     <div v-show="!isShowLogin" class="back">

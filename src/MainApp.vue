@@ -61,9 +61,10 @@
             <Submenu name="4">
               <template slot="title">
                 <Icon type="ios-keypad"></Icon>
-                数据维护
+                管理
               </template>
-              <MenuItem name="4-1">下拉菜单维护</MenuItem>
+              <MenuItem name="4-1" to="/Admin">用户管理</MenuItem>
+              <MenuItem name="4-2">下拉菜单管理</MenuItem>
             </Submenu>
           </Menu>
 

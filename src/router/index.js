@@ -70,13 +70,14 @@ export default new Router({
           path: "/ChildReport",
           name: "ChildReport",
           component: ChildReport
+        },
+        {
+          path: '/Admin',
+          name: "Admin",
+          component: Admin
         }
       ]
     },
-    {
-      path: '/Admin',
-      name: "Admin",
-      component: Admin
-    }
+
   ]
 })
