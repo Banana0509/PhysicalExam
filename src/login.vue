@@ -1,6 +1,6 @@
 <template>
   <div class="background">
-    <div class="maxdiv" v-show="this.$store.isShowLogin">
+    <div class="maxdiv" v-show="isShowLogin">
       <div>
         <br><br> <br><br>
         <h1 class="title">{{this.GLOBAL.web_name}}</h1>
@@ -29,7 +29,7 @@
         <!--<a href="http://www.herenit.com/">和仁科技出品</a>-->
       </div>
     </div>
-    <div v-show="!this.$store.isShowLogin" class="back">
+    <div v-show="!isShowLogin" class="back">
       <router-view></router-view>
     </div>
   </div>
@@ -57,15 +57,14 @@
       }
     },
     computed: {
-      global() {
-        //console.log("computed global:" + this.isShowLogin + this.GLOBAL.isShowLogin);
-        //this.isShowLogin = this.GLOBAL.isShowLogin;
-        //console.log("computed global:" + this.isShowLogin + this.GLOBAL.isShowLogin);
-        // return this.isShowLogin;
+      //状态管理变量
+      isShowLogin() {
+        console.log("computed isShowLogin:" + this.$store.state.isShowLogin);
+        return this.$store.state.isShowLogin;
       }
     },
-    created() {
-      console.log("this.$store.isShowLogin" + this.$store.isShowLogin);
+    mounted() {
+      //console.log("this.$store.state.isShowLogin:" + this.$store.state.isShowLogin);
     },
     methods: {
       handleSubmit(name) {
@@ -76,7 +75,8 @@
             //登陆成功进行页面跳转
             //this.isShowLogin = false;
             //this.GLOBAL.isShowLogin = false;
-            this.$store.commit('setisShowLogin', false);
+            this.$store.commit('setIsShowLogin');
+
             if (this.formInline.user == 'admin') {
               this.$router.push({path: "/Admin"});
             }

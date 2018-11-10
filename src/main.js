@@ -2,7 +2,6 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import login from './login'
-import store from './global/store'
 import router from './router'
 import iView from 'iview'
 import vueResource from 'vue-resource'
@@ -18,12 +17,35 @@ Vue.use(vuex); //全局状态管理控件
 Vue.http.options.emulateJSON = true; //post data使用FormData
 Vue.http.options.emulateHTTP = true;
 /* eslint-disable no-new */
+
+/**
+ * vuex全局状态管理模式
+ * @type {Store}
+ */
+const store = new vuex.Store({
+  name: 'store',
+  state: {
+    isShowLogin: true
+  },
+  mutations: {
+    setIsShowLogin(state) {  //使用方式 store.commit("set",true)
+      state.isShowLogin = !state.isShowLogin;
+      console.log('change store setIsShowLogin = ' + state.isShowLogin);
+    }
+  }
+});
+
+/**
+ * vue根实例
+ */
 new Vue({
   el: '#app',
   router,
-  components: {
-    'login': login,
-    'store': store
-  },
-  //template: {'<login/>'}
-})
+  store,  //vuex注入顶部，底下的部件都可以通过this.$store.state访问数据
+  components: {login},
+  template: '<login/>'
+});
+
+
+
+
