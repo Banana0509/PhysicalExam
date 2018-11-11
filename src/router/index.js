@@ -11,7 +11,7 @@ import ExamReport from '@/components/ExamReport'
 import ChildReport from '@/components/ChildReport'
 import ChildInsurData from '@/components/ChildInsurData'
 import MainApp from "../MainApp"
-import Admin from "../Admin"
+import Admin from "../components/Admin"
 Vue.use(Router)
 
 export default new Router({

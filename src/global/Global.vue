@@ -15,7 +15,7 @@
       userId,
       employeeId,
       url,
-      web_name
+      web_name,
     }
 </script>
 

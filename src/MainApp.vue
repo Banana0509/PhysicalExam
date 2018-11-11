@@ -3,7 +3,7 @@
     <Layout class="back">
       <Header>
         <div class="layout-user">
-          <login-dialog></login-dialog>
+          <login-dialog v-show="false"></login-dialog>
         </div>
 
         <div class="layout-logo">
@@ -93,8 +93,8 @@ export default {
   components:{
     'login-dialog':LoginDialog
   },
-  created() {
-    console.log("created");
+  mounted() {
+    console.log(" mounted created");
     this.$router.push({path: "/welcome"});
   },
   methods:{
@@ -125,7 +125,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .underline{
   text-decoration: underline;
 }
