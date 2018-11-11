@@ -1,64 +1,68 @@
 <template>
-  <Form :model="Data" class="form_type" label-position="right" :label-width="150">
-    <FormItem label="身高(m)">
-      <InputNumber v-model="Data.height"/>
-    </FormItem>
-    <FormItem label="体重(kg)">
-      <InputNumber v-model="Data.weight"/>
-    </FormItem>
-    <FormItem label="血压(mmHg)">
-      <Row>
-        <Col span="11">
-        <InputNumber v-model="Data.bloodPressureL"/>
-        </Col>
-        <Col span="2">
-        /</Col>
-        <Col span="11">
-        <InputNumber v-model="Data.bloodPressureH"/>
-        </Col>
-      </Row>
-    </FormItem>
-    <FormItem label="预测身高(m)">
-      <InputNumber v-model="Data.pre_height"/>
-    </FormItem>
-    <FormItem label="喂养情况">
-      <Select v-model="Data.feed_status_select">
-        <Option value="优">优</Option>
-        <Option value="良">良</Option>
-        <Option value="差">差</Option>
-      </Select>
-    </FormItem>
-    <FormItem label="备注">
-      <Input type="textarea" v-model="Data.feed_status" :autosize="true" placeholder="可不填"/>
-    </FormItem>
-    <FormItem label="生长发育评价">
-      <Select v-model="Data.grade_select">
-        <Option value="优">优</Option>
-        <Option value="良">良</Option>
-        <Option value="差">差</Option>
-      </Select>
-    </FormItem>
-    <FormItem label="备注">
-      <Input type="textarea" v-model="Data.grade" :autosize="true" placeholder="可不填"/>
-    </FormItem>
-    <FormItem label="记录小结">
-      <Input type="textarea" v-model="Data.Summarize" :autosize="true" placeholder="点击按钮自动生成，无需输入"/>
-    </FormItem>
-    <FormItem>
-      <Row>
-        <Col span="11">
-        <Button type="success" @click="generateSummarize">生成记录小结</Button>
-        </Col>
-        <Col span="11">
-        <Button type="success" @click="saveInfo">保存信息</Button>
-        </Col>
-      </Row>
-    </FormItem>
+  <div>
+    <user-info></user-info>
+    <Form :model="Data" class="form_type" label-position="right" :label-width="150">
+      <FormItem label="身高(m)">
+        <InputNumber v-model="Data.height"/>
+      </FormItem>
+      <FormItem label="体重(kg)">
+        <InputNumber v-model="Data.weight"/>
+      </FormItem>
+      <FormItem label="血压(mmHg)">
+        <Row>
+          <Col span="11">
+          <InputNumber v-model="Data.bloodPressureL"/>
+          </Col>
+          <Col span="2">
+          /</Col>
+          <Col span="11">
+          <InputNumber v-model="Data.bloodPressureH"/>
+          </Col>
+        </Row>
+      </FormItem>
+      <FormItem label="预测身高(m)">
+        <InputNumber v-model="Data.pre_height"/>
+      </FormItem>
+      <FormItem label="喂养情况">
+        <Select v-model="Data.feed_status_select">
+          <Option value="优">优</Option>
+          <Option value="良">良</Option>
+          <Option value="差">差</Option>
+        </Select>
+      </FormItem>
+      <FormItem label="备注">
+        <Input type="textarea" v-model="Data.feed_status" :autosize="true" placeholder="可不填"/>
+      </FormItem>
+      <FormItem label="生长发育评价">
+        <Select v-model="Data.grade_select">
+          <Option value="优">优</Option>
+          <Option value="良">良</Option>
+          <Option value="差">差</Option>
+        </Select>
+      </FormItem>
+      <FormItem label="备注">
+        <Input type="textarea" v-model="Data.grade" :autosize="true" placeholder="可不填"/>
+      </FormItem>
+      <FormItem label="记录小结">
+        <Input type="textarea" v-model="Data.Summarize" :autosize="true" placeholder="点击按钮自动生成，无需输入"/>
+      </FormItem>
+      <FormItem>
+        <Row>
+          <Col span="11">
+          <Button type="success" @click="generateSummarize">生成记录小结</Button>
+          </Col>
+          <Col span="11">
+          <Button type="success" @click="saveInfo">保存信息</Button>
+          </Col>
+        </Row>
+      </FormItem>
 
-  </Form>
+    </Form>
+  </div>
 </template>
 
 <script>
+  import userInfo from './commCompo/userInfo'
   export default {
     name: "ChildInsurData",
     data(){
@@ -78,6 +82,9 @@
           Summarize: ""
         },
       }
+    },
+    components: {
+      'user-info': userInfo
     },
     methods: {
       saveInfo() {
