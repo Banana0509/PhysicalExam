@@ -2,8 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import welcome from '@/components/welcome'
 import GeneralData from '@/components/GeneralData'
+import General from '@/components/General'
 import TodoList from '@/components/TodoList'
 import InternalData from '@/components/InternalData'
+import Internal from '@/components/Internal'
 import SurgeryData from '@/components/SurgeryData'
 import GynaecologyData from '@/components/GynaecologyData'
 import FivesensData from '@/components/FivesensData'
@@ -32,6 +34,11 @@ export default new Router({
           component: GeneralData
         },
         {
+          path: '/General',
+          name: 'General',
+          component: General
+        },
+        {
           path:'/TodoList',
           name:'TodoList',
           component: TodoList
@@ -40,6 +47,11 @@ export default new Router({
           path:'/InternalData',
           name:'InternalData',
           component: InternalData
+        },
+        {
+          path: '/Internal',
+          name: 'Internal',
+          component: Internal
         },
         {
           path:'/SurgeryData',

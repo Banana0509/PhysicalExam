@@ -3,7 +3,7 @@
     <Button type="success" ghost v-if="!isShow">体检人ID:{{ this.GLOBAL.userId}}</Button>
     <Button type="success" v-if="!isShow" @click="change">切换</Button>
 
-    <Button type="success" @click="modall = true,id=''" v-if="isShow">体检个人信息录入</Button>
+    <Button type="success" @click="modall = true,id=''" v-if="isShow">体检信息查询</Button>
     <Modal v-model="modall" title="体检人信息" width="40%">
       <div>
       <Form>
