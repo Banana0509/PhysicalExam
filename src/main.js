@@ -8,10 +8,12 @@ import vueResource from 'vue-resource'
 import 'iview/dist/styles/iview.css'
 import global_ from './global/Global'
 import vuex from 'vuex'
+import XLSX from 'xlsx/dist/xlsx.full.min'
 
 Vue.config.productionTip = false
 Vue.use(iView);//引入iview
 Vue.use(vueResource);//http请求支持包
+Vue.use(XLSX);
 Vue.prototype.GLOBAL=global_; //全局变量
 Vue.use(vuex); //全局状态管理控件
 Vue.http.options.emulateJSON = true; //post data使用FormData
